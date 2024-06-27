@@ -1,0 +1,140 @@
+
+body{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    background-color: #E1F7F5;
+    overflow: hidden;
+    margin : 0;
+    padding : 0;
+
+}
+
+h1{
+    height: 50px;
+    width: 100%;
+    background-color: #002d71;
+    color: white;
+    margin: 0;
+    
+}
+
+#board{
+    height: 400px;
+    width: 399px;
+    background-color: #AAA;
+    border: 6px solid #CCC;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.tile{
+    height: 90px;
+    width: 90px;
+    border: 5px solid #CCC;
+    font-size: 35px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+
+.t2{
+    background-color: #e3f2fd;
+    color: #727371;
+}
+
+.t4{
+    background-color: #bbdefb;
+    color: #727371;
+}
+
+.t8{
+    background-color: #90caf9;
+    color: white;
+}
+
+.t16{
+    background-color: #64b5f6;
+    color: white;
+}
+
+.t32{
+    background-color: #42a5f5;
+    color: white;
+}
+
+.t64{
+    background-color: #2196f3;
+    color: white;
+}
+
+
+.t128{
+    background-color: #1e88e5;
+    color: white;
+}
+
+.t256{
+    background-color: #1976d2;
+    color: white;
+}
+
+.t512{
+    background-color: #1565c0;
+    color: white;
+}
+
+.t1024{
+    background-color: #0d47a1;
+    color: white;
+}
+
+.t2048{
+    background-color: #002d71;
+    color: white;
+}
+
+/* #game-over-container {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+} */
+
+body.blur-background #blur-background {
+    filter: blur(5px);
+    transition: filter 0.3s ease-in-out;
+}
+
+.swal2-backdrop-show {
+    backdrop-filter: blur(5px);
+}
+
+@media (max-width: 480px) {
+    #board{
+        height: 300px;
+        width: 300px;
+    }
+    .tile {
+        height: 65px;
+        width: 65.4px;
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 350px) {
+    #board{
+        height: 280px;
+        width: 280px;
+    }
+    .tile {
+        height: 60px;
+        width: 60.4px;
+        font-size: 24px;
+    }
+}
