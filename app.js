@@ -278,3 +278,51 @@ function resetGame() {
     genTwo();
     genTwo();
 }
+
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+
+document.addEventListener('touchstart', handleTouchStart, false);
+document.addEventListener('touchmove', handleTouchMove, false);
+document.addEventListener('touchend', handleTouchEnd, false);
+
+function handleTouchStart(event) {
+    touchStartX = event.touches[0].clientX;
+    touchStartY = event.touches[0].clientY;
+}
+
+function handleTouchMove(event) {
+    touchEndX = event.touches[0].clientX;
+    touchEndY = event.touches[0].clientY;
+}
+
+function handleTouchEnd() {
+    let deltaX = touchEndX - touchStartX;
+    let deltaY = touchEndY - touchStartY;
+    
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+        
+        if (deltaX > 0) {
+            slideRight();
+        } else {
+            slideLeft();
+        }
+    } else {
+        if (deltaY > 0) {
+            slideDown();
+        } else {
+            slideUp();
+        }
+    }
+    
+    genTwo();
+    document.getElementById("score").innerHTML = score;
+    
+    if (!canMove()) {
+        showGameOverMessage();
+    }
+    
+    touchStartX = touchStartY = touchEndX = touchEndY = 0;
+}
