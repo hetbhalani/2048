@@ -326,3 +326,21 @@ function handleTouchEnd() {
     
     touchStartX = touchStartY = touchEndX = touchEndY = 0;
 }
+
+let reset = document.getElementById("reset");
+
+reset.addEventListener("click", ()=>{
+    Swal.fire({
+        title: "Are you sure?",
+        text: "Your score will start from 0 again!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Reset it!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          resetGame();
+        }
+      });
+});
