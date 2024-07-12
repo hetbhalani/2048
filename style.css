@@ -1,7 +1,7 @@
 body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
-    background-color: #fffae2; /* Light beige background */
+    background-color: #faf8ef; /* Light beige background */
     overflow: hidden;
     margin: 0;
     padding: 0;
@@ -11,14 +11,14 @@ body {
 h1 {
     height: 60px;
     width: 100%;
-    background-color: #776e65; /* Darker brown header */
-    color: white;
+    /* background-color: #776e65; Darker brown header */
+    color: #776e65;
     margin: 0;
     font-family: monospace;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 35px;
+    font-size: 45px;
 }
 
 h2 {
@@ -26,7 +26,7 @@ h2 {
     font-size: 27px;
     font-family: monospace;
     margin-bottom: -1rem;
-    color: #776e65; /* Darker brown for h2 */
+    color: #776e65;
 }
 
 #board {
@@ -49,7 +49,8 @@ h2 {
     height: 90px;
     width: 90px;
     border: 5px solid #bbada0; /* Light beige border */
-    font-size: 35px;
+    font-size: 40px;
+    font-family: "Clear Sans", Arial, sans-serif;
     font-weight: bold;
     display: flex;
     justify-content: center;
@@ -162,16 +163,26 @@ body.blur-background #blur-background {
     .tile {
         height: 65px;
         width: 65px;
-        font-size: 24px;
+        font-size: 35px;
     }
     #reset, #undo {
-        height: 2.1rem;
-        width: 4.1rem;
-        line-height: 2rem;
-        font-size: 0.8rem;
+        height: 2.7rem;
+        width: 4.7rem;
+        line-height: 2.7rem;
+        font-size: 1.2rem;
+        font-weight: 550;
+        padding: 1px;
     }
     #reset:hover, #undo:hover {
         transform: scale(1.1);
+    }
+    h2{
+        font-size: 25px;
+        color: #58524c;
+    }
+    h1{
+        font-size: 40px;
+        color: #58524c;
     }
 }
 
