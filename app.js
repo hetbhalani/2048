@@ -285,7 +285,7 @@ let touchStartY = 0;
 let touchEndX = 0;
 let touchEndY = 0;
 
-const SWIPE_THRESHOLD = 50; 
+const SWIPE_THRESHOLD = 40; 
 
 document.addEventListener('touchstart', handleTouchStart, false);
 document.addEventListener('touchend', handleTouchEnd, false);
