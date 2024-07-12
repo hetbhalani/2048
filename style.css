@@ -31,7 +31,7 @@ h2{
 
 #board{
     height: 400px;
-    width: 399px;
+    width: 400px;
     background-color: #AAA;
     border: 6px solid #CCC;
     margin: auto;
@@ -173,6 +173,13 @@ body.blur-background #blur-background {
         width: 65px;
         font-size: 24px;
     }
+    #reset, #undo{
+    height: 2rem;
+    width: 4rem;
+    line-height: 2rem;
+    font-size: 0.8rem;
+    }
+   
 }
 
 @media (max-width: 350px) {

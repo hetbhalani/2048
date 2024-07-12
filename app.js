@@ -279,13 +279,15 @@ function resetGame() {
     genTwo();
 }
 
+
 let touchStartX = 0;
 let touchStartY = 0;
 let touchEndX = 0;
 let touchEndY = 0;
 
+const SWIPE_THRESHOLD = 50; 
+
 document.addEventListener('touchstart', handleTouchStart, false);
-document.addEventListener('touchmove', handleTouchMove, false);
 document.addEventListener('touchend', handleTouchEnd, false);
 
 function handleTouchStart(event) {
@@ -293,35 +295,38 @@ function handleTouchStart(event) {
     touchStartY = event.touches[0].clientY;
 }
 
-function handleTouchMove(event) {
-    touchEndX = event.touches[0].clientX;
-    touchEndY = event.touches[0].clientY;
+function handleTouchEnd(event) {
+    touchEndX = event.changedTouches[0].clientX;
+    touchEndY = event.changedTouches[0].clientY;
+    handleSwipe();
 }
 
-function handleTouchEnd() {
+function handleSwipe() {
     let deltaX = touchEndX - touchStartX;
     let deltaY = touchEndY - touchStartY;
     
-    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+    if (Math.abs(deltaX) > SWIPE_THRESHOLD || Math.abs(deltaY) > SWIPE_THRESHOLD) {
+        if (Math.abs(deltaX) > Math.abs(deltaY)) {
+            
+            if (deltaX > 0) {
+                slideRight();
+            } else {
+                slideLeft();
+            }
+        } else {
+            if (deltaY > 0) {
+                slideDown();
+            } else {
+                slideUp();
+            }
+        }
         
-        if (deltaX > 0) {
-            slideRight();
-        } else {
-            slideLeft();
+        genTwo();
+        document.getElementById("score").innerHTML = score;
+        
+        if (!canMove()) {
+            showGameOverMessage();
         }
-    } else {
-        if (deltaY > 0) {
-            slideDown();
-        } else {
-            slideUp();
-        }
-    }
-    
-    genTwo();
-    document.getElementById("score").innerHTML = score;
-    
-    if (!canMove()) {
-        showGameOverMessage();
     }
     
     touchStartX = touchStartY = touchEndX = touchEndY = 0;
