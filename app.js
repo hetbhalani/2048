@@ -3,11 +3,18 @@ var score = 0;
 var tempScore = 0;
 var soundPlayed = false;
 var isFirstTime = true;
+var firstMoveMade = false;
 var best = 0;
 var rows = 4;
 var cols = 4;
 best = parseInt(best);
 document.getElementById("best").innerHTML = best;
+const beatBest = new Audio('./ringtone-193209.mp3');
+beatBest.volume = 0.7;
+
+// document.addEventListener('touchstart', function() {
+//     beatBest.play().then(() => beatBest.pause()).catch(error => console.log('Audio play failed:', error));
+// }, { once: true });
 
 window.onload = function(){
     setGame();
@@ -123,6 +130,8 @@ function canMove() {
 }
 
 document.addEventListener("keyup", (e) => {
+    if (!firstMoveMade) firstMoveMade = true;
+
     if(e.code == "ArrowLeft"){
         slideLeft();
         genTwo();
@@ -181,15 +190,13 @@ function slide(row){
             if(score > best){
                 best += row[i];
             }
-            if(best > tempScore && !soundPlayed && !isFirstTime){
-                const beatBest = new Audio('./game-start.mp3');
-                beatBest.play();
+            if (best > tempScore && !soundPlayed && !isFirstTime && firstMoveMade) { 
                 soundPlayed = true; 
-
-                document.getElementById('msg').innerHTML= "You beat highest score!";
+                beatBest.play().catch(error => console.log('Audio play failed:', error));
+                document.getElementById('msg').innerHTML = "You beat highest score!";
                 setTimeout(() => {
-                    document.getElementById('msg').innerHTML= "";
-                },3000) 
+                    document.getElementById('msg').innerHTML = "";
+                }, 3000);
             }
         }
     }
@@ -288,8 +295,6 @@ function showGameOverMessage() {
     });
 }
 
-
-
 function resetGame() {
     tempScore = score;
     soundPlayed = false;
@@ -333,6 +338,8 @@ function handleTouchEnd(event) {
 }
 
 function handleSwipe() {
+    if (!firstMoveMade) firstMoveMade = true;
+
     let deltaX = touchEndX - touchStartX;
     let deltaY = touchEndY - touchStartY;
     

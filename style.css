@@ -144,7 +144,7 @@ body.blur-background #blur-background {
     #board {
         height: 300px;
         width: 300px;
-        margin-top: 90px;
+        margin-top: 50px;
     }
     
     .tile {
@@ -159,7 +159,7 @@ body.blur-background #blur-background {
         line-height: 2.7rem;
         font-size: 1.2rem;
         font-weight: 550;
-        padding: 1px;
+        padding: 0px;
     }
     
     #reset:hover, #undo:hover {
