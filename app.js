@@ -174,7 +174,6 @@ function slide(row){
             score += row[i];
             if(score > best){
                 best += row[i];
-                
             }
         }
     }
