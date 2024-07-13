@@ -1,5 +1,8 @@
 var board;
 var score = 0;
+var tempScore = 0;
+var soundPlayed = false;
+var isFirstTime = true;
 var best = 0;
 var rows = 4;
 var cols = 4;
@@ -19,7 +22,7 @@ function setGame(){
     // ]
 
     board = [
-        [0, 0, 0, 0],
+        [1024, 1024, 0, 0],
         [0, 0, 0, 0],
         [0, 0, 0, 0],
         [0, 0, 0, 0]
@@ -98,6 +101,9 @@ function updateTile(tile, num){
             tile.classList.add("t2048");
         }
     }
+    if (num == 2048) {
+        youWon();
+    }
 }
 
 
@@ -174,6 +180,11 @@ function slide(row){
             score += row[i];
             if(score > best){
                 best += row[i];
+            }
+            if(best > tempScore && !soundPlayed && !isFirstTime){
+                const beatBest = new Audio('./game-start.mp3');
+                beatBest.play();
+                soundPlayed = true;  
             }
         }
     }
@@ -264,6 +275,8 @@ function showGameOverMessage() {
         allowOutsideClick: false
     }).then((result) => {
         if (result.isConfirmed) {
+            soundPlayed = false;
+            isFirstTime = false;
             resetGame();
         }
         document.body.classList.remove('blur-background');
@@ -273,6 +286,9 @@ function showGameOverMessage() {
 
 
 function resetGame() {
+    tempScore = score;
+    soundPlayed = false;
+    isFirstTime = false;
     score = 0;
     board = [
         [0, 0, 0, 0],
@@ -361,7 +377,23 @@ reset.addEventListener("click", ()=>{
       });
 });
 
-function conffetiOnWin(){
 
+function youWon(){
+    document.body.classList.add('blur-background');
+    Swal.fire({
+        title: "Hurray!",
+        text: "You won, You reached 2048!",
+        imageUrl: "./image_processing20200509-30357-1ndo5eg.gif",
+        imageWidth: 300,
+        imageHeight: 200,
+        imageAlt: "Custom image"
+      });
+
+      setTimeout(() => {
+        confetti.start();
+        setTimeout(() => {
+            confetti.stop();
+            resetBTN.disabled = false;
+        }, 5000);
+    }, 100);
 }
-
