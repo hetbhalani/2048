@@ -1,7 +1,10 @@
 var board;
 var score = 0;
+var best = 0;
 var rows = 4;
 var cols = 4;
+best = parseInt(best);
+document.getElementById("best").innerHTML = best;
 
 window.onload = function(){
     setGame();
@@ -131,6 +134,8 @@ document.addEventListener("keyup", (e) => {
         genTwo();
     }
     document.getElementById("score").innerHTML = score;
+    document.getElementById("best").innerHTML = best;
+
     if (!canMove()) {
         // document.getElementById("game-over-container").style.display = "flex";
         // document.getElementById("final-score").innerText = score;
@@ -167,6 +172,10 @@ function slide(row){
             row[i] *= 2;
             row[i+1] = 0;
             score += row[i];
+            if(score > best){
+                best += row[i];
+                
+            }
         }
     }
 
@@ -274,6 +283,8 @@ function resetGame() {
     ];
     document.body.classList.remove('blur-background');
     document.getElementById("score").innerHTML = score;
+    document.getElementById("best").innerHTML = best;
+
     renderBoard();
     genTwo();
     genTwo();
@@ -285,7 +296,7 @@ let touchStartY = 0;
 let touchEndX = 0;
 let touchEndY = 0;
 
-const SWIPE_THRESHOLD = 40; 
+const SWIPE_THRESHOLD = 40;
 
 document.addEventListener('touchstart', handleTouchStart, false);
 document.addEventListener('touchend', handleTouchEnd, false);
@@ -323,6 +334,7 @@ function handleSwipe() {
         
         genTwo();
         document.getElementById("score").innerHTML = score;
+        document.getElementById("best").innerHTML = best;
         
         if (!canMove()) {
             showGameOverMessage();
@@ -349,3 +361,8 @@ reset.addEventListener("click", ()=>{
         }
       });
 });
+
+function conffetiOnWin(){
+
+}
+
