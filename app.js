@@ -10,7 +10,7 @@ var cols = 4;
 best = parseInt(best);
 document.getElementById("best").innerHTML = best;
 const beatBest = new Audio('./ringtone-193209.mp3');
-beatBest.volume = 0.7;
+beatBest.volume= 0.5;
 
 // document.addEventListener('touchstart', function() {
 //     beatBest.play().then(() => beatBest.pause()).catch(error => console.log('Audio play failed:', error));
