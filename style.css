@@ -20,6 +20,16 @@ h1 {
     font-size: 45px;
 }
 
+#msg{
+    height: 40px;
+    font-size: 25px;
+    justify-content: center;
+    align-items: center;
+    /* background-color: rebeccapurple; */
+    padding-top: 20px;
+    color: #776e65;
+}
+
 .game-container {
     position: relative;
     width: 400px;
@@ -50,7 +60,7 @@ h1 {
     position: relative;
     z-index: 1;
     border-radius: 5px;
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 .tile {
@@ -111,6 +121,11 @@ body.blur-background #blur-background {
 #reset:hover, #undo:hover {
     cursor: pointer;
     transform: scale(1.1);
+}
+
+#reset:focus, #undo:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(143, 122, 102, 0.5); /* This creates a subtle glow effect */
 }
 
 @media (max-width: 480px) {

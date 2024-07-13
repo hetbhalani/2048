@@ -22,7 +22,7 @@ function setGame(){
     // ]
 
     board = [
-        [1024, 1024, 0, 0],
+        [0, 0, 0, 0],
         [0, 0, 0, 0],
         [0, 0, 0, 0],
         [0, 0, 0, 0]
@@ -184,7 +184,12 @@ function slide(row){
             if(best > tempScore && !soundPlayed && !isFirstTime){
                 const beatBest = new Audio('./game-start.mp3');
                 beatBest.play();
-                soundPlayed = true;  
+                soundPlayed = true; 
+
+                document.getElementById('msg').innerHTML= "You beat highest score!";
+                setTimeout(() => {
+                    document.getElementById('msg').innerHTML= "";
+                },3000) 
             }
         }
     }
@@ -379,21 +384,22 @@ reset.addEventListener("click", ()=>{
 
 
 function youWon(){
+    confetti.start();
     document.body.classList.add('blur-background');
+    const winAudio = new Audio('./win.mp3');
+    winAudio.play();
     Swal.fire({
         title: "Hurray!",
-        text: "You won, You reached 2048!",
+        text: "You won!!!, You reached 2048!",
         imageUrl: "./image_processing20200509-30357-1ndo5eg.gif",
         imageWidth: 300,
         imageHeight: 200,
         imageAlt: "Custom image"
-      });
-
-      setTimeout(() => {
-        confetti.start();
-        setTimeout(() => {
+      }).then((result) => {
+        if (result.isConfirmed) {
             confetti.stop();
-            resetBTN.disabled = false;
-        }, 5000);
-    }, 100);
+            document.body.classList.remove('blur-background');
+            resetGame();
+        }
+      });  
 }
