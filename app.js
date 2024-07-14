@@ -29,7 +29,7 @@ function setGame(){
     // ]
 
     board = [
-        [0, 0, 0, 0],
+        [1024, 1024, 0, 0],
         [0, 0, 0, 0],
         [0, 0, 0, 0],
         [0, 0, 0, 0]
@@ -397,7 +397,7 @@ function youWon(){
     winAudio.play();
     Swal.fire({
         title: "Hurray!",
-        text: "You won!!!, You reached 2048!",
+        html: `You won🎉🎉🎉 You reached 2048! <br> Your Score is ${score}`,
         imageUrl: "./image_processing20200509-30357-1ndo5eg.gif",
         imageWidth: 300,
         imageHeight: 200,
