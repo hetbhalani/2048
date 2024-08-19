@@ -21,19 +21,19 @@ Click Here and Enjoy: https://hetbhalani.github.io/2048/
 
 **🧩 Rules:**
 - Each move adds a new tile with a value of **2️⃣** to the grid.
-- The game ends when no more moves are possible 🚫.
+- The game ends when no more moves are possible.
 
 ## ✨ Features
 
-- **Responsive Design:** The game is designed to be played on both desktop 🖥️ and mobile 📱 devices.
-- **Score Tracking:** The game keeps track of your score 🏆, which increases as you combine tiles.
-- **Game Persistence:** Your progress is saved in local storage 💾, so you can resume your game even after closing the browser.
+- **Responsive Design:** The game is designed to be played on both desktop and mobile devices.
+- **Score Tracking:** The game keeps track of your score, which increases as you combine tiles.
+- **Game Persistence:** Your progress is saved in local storage, so you can resume your game even after closing the browser.
 
 ## 🛠️ Technologies Used
 
-- **HTML:** The structure of the game is built using **HTML** 🧱.
-- **CSS:** Custom styling is applied with **CSS** 🎨 to create a visually appealing interface.
-- **JavaScript:** The game logic, including tile movement, merging, and score tracking, is implemented in **JavaScript** ⚙️.
+- **HTML:** The structure of the game is built using **HTML**.
+- **CSS:** Custom styling is applied with **CSS** to create a visually appealing interface.
+- **JavaScript:** The game logic, including tile movement, merging, and score tracking, is implemented in **JavaScript** .
 
 ## 🤝 Contribution
 
