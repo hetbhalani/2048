@@ -7,8 +7,10 @@ var firstMoveMade = false;
 var best = 0;
 var rows = 4;
 var cols = 4;
-best = parseInt(best);
+
+var best = localStorage.getItem("best") ? parseInt(localStorage.getItem("best")) : 0;
 document.getElementById("best").innerHTML = best;
+
 const beatBest = new Audio('./ringtone-193209.mp3');
 beatBest.volume= 0.5;
 
@@ -188,7 +190,8 @@ function slide(row){
             row[i+1] = 0;
             score += row[i];
             if(score > best){
-                best += row[i];
+                best = score;
+                localStorage.setItem("best", best);
             }
             if (best > tempScore && !soundPlayed && !isFirstTime && firstMoveMade) { 
                 soundPlayed = true; 
@@ -398,7 +401,7 @@ function youWon(){
     Swal.fire({
         title: "Hurray!",
         html: `You won🎉🎉🎉 You reached 2048! <br> Your Score is ${score}`,
-        imageUrl: "./image_processing20200509-30357-1ndo5eg.gif",
+        imageUrl: "./imgs/image_processing20200509-30357-1ndo5eg.gif",
         imageWidth: 300,
         imageHeight: 200,
         imageAlt: "Custom image"
